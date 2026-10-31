@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PhishGuard | Stay Safe Online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    background: radial-gradient(circle at 20% 20%, #7C3AED 0%, transparent 45%),
+                radial-gradient(circle at 85% 15%, #06B6D4 0%, transparent 40%),
+                radial-gradient(circle at 50% 90%, #FF6B6B 0%, transparent 45%),
+                #1E1B4B;
+    background-attachment: fixed;
+    color: #F8FAFC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px 80px;
+  }
+
+  nav {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+  }
+
+  .logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo-badge {
+    width: 34px; height: 34px;
+    background: linear-gradient(135deg, #7C3AED, #06B6D4);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+
+  nav a {
+    color: #C4B5FD;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    margin-left: 24px;
+  }
+  nav a:hover { color: #ffffff; }
+
+  header {
+    text-align: center;
+    max-width: 620px;
+    margin-bottom: 48px;
+  }
+
+  header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  header p {
+    font-size: 17px;
+    color: #CBD5E1;
+    line-height: 1.6;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 620px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(16px);
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  }
+
+  label {
+    display: block;
+    font-size: 14px;
+    color: #C4B5FD;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  select, textarea {
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #F8FAFC;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 12px;
+    padding: 12px 14px;
+    outline: none;
+  }
+
+  select { margin-bottom: 20px; }
+  select option { background: #1E1B4B; }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+  textarea:focus, select:focus { border-color: #06B6D4; }
+  textarea::placeholder { color: #94A3B8; }
+
+  button {
+    width: 100%;
+    padding: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1E1B4B;
+    background: linear-gradient(135deg, #06B6D4, #7C3AED 90%);
+    background-size: 160% 160%;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  button:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(124,58,237,0.4); }
+  button:active { transform: translateY(0); }
+
+  #resultBox {
+    margin-top: 22px;
+    padding: 16px 18px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 15px;
+    display: none;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #resultBox.safe {
+    display: flex;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.5);
+    color: #6EE7B7;
+  }
+
+  #resultBox.suspicious {
+    display: flex;
+    background: rgba(255, 107, 107, 0.15);
+    border: 1px solid rgba(255, 107, 107, 0.5);
+    color: #FCA5A5;
+  }
+
+  footer {
+    margin-top: 40px;
+    font-size: 13px;
+    color: #94A3B8;
+  }
+</style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <div class="logo-badge">🛡️</div>
+      PhishGuard
+    </div>
+    <div>
+      <a href="/login">Login</a>
+      <a href="/signup">Sign up</a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Not sure if that message is real?</h1>
+    <p>Paste any email or text below and PhishGuard will scan it for common phishing red flags in seconds.</p>
+  </header>
+
+  <div class="card">
+    <label for="inputType">What are you checking?</label>
+    <select id="inputType">
+      <option value="email">Email</option>
+      <option value="text">Text Message</option>
+    </select>
+
+    <label for="inputData">Paste the message</label>
+    <textarea id="inputData" placeholder="e.g. Urgent: verify your account now or it will be locked..."></textarea>
+
+    <button onclick="checkMessage()">Check Message</button>
+
+    <div id="resultBox"></div>
+  </div>
+
+  <footer>Every check is scanned locally and never shared.</footer>
+
+  <script>
+    function checkMessage() {
+      const type = document.getElementById("inputType").value;
+      const data = document.getElementById("inputData").value;
+      const box = document.getElementById("resultBox");
+
+      fetch("/check", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ input_type: type, input_data: data })
+      })
+      .then(response => response.json())
+      .then(result => {
+        box.className = "";
+        if (result.result === "suspicious") {
+          box.classList.add("suspicious");
+          box.innerHTML = "⚠️ This looks suspicious — be careful with this message.";
+        } else {
+          box.classList.add("safe");
+          box.innerHTML = "✅ This looks safe. No red flags found.";
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

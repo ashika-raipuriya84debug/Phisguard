@@ -1,0 +1,125 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PhishGuard | Scanner</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="dashboard-body">
+
+<header class="dashboard-header">
+
+    <div class="logo">🛡️ PhishGuard</div>
+
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="scanner.html">Scanner</a>
+        <a href="history.html">History</a>
+        <a href="index.html">Logout</a>
+    </nav>
+
+</header>
+
+
+<main class="scanner">
+
+    <div class="scanner-heading">
+
+        <p class="tag">THREAT ANALYSIS</p>
+
+        <h1>Phishing Scanner</h1>
+
+        <p>
+            Enter an email or URL below to analyze potential security threats.
+        </p>
+
+    </div>
+
+
+    <div class="scanner-card">
+
+        <div class="scanner-tabs">
+
+            <button class="tab active" onclick="showURLScanner()">
+                🔗 URL Scanner
+            </button>
+
+            <button class="tab" onclick="showEmailScanner()">
+                📧 Email Scanner
+            </button>
+
+        </div>
+
+
+        <!-- URL SCANNER -->
+
+        <div id="urlScanner">
+
+            <label>Enter URL</label>
+
+            <input
+                type="text"
+                id="urlInput"
+                class="large-input"
+                placeholder="https://example.com"
+            >
+
+            <p class="input-help">
+                Enter the complete URL you want to analyze.
+            </p>
+
+            <button onclick="scanURL()" class="primary-btn scan-btn">
+                Analyze URL
+            </button>
+
+        </div>
+
+
+        <!-- EMAIL SCANNER -->
+
+        <div id="emailScanner" style="display:none;">
+
+            <label>Email Content</label>
+
+            <textarea
+                id="emailInput"
+                placeholder="Paste suspicious email content here..."
+            ></textarea>
+
+            <p class="input-help">
+                Don't include passwords or other sensitive information.
+            </p>
+
+            <button onclick="scanEmail()" class="primary-btn scan-btn">
+                Analyze Email
+            </button>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div id="scanResult" class="scan-result">
+
+            <div class="result-icon">🛡️</div>
+
+            <h2>Ready to Analyze</h2>
+
+            <p>
+                Your security analysis result will appear here.
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

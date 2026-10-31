@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PhishGuard | Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="dashboard-body">
+
+<header class="dashboard-header">
+
+    <div class="logo">🛡️ PhishGuard</div>
+
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="scanner.html">Scanner</a>
+        <a href="history.html">History</a>
+        <a href="index.html">Logout</a>
+    </nav>
+
+</header>
+
+<main class="dashboard">
+
+    <div class="dashboard-title">
+
+        <div>
+            <p class="tag">SECURITY CENTER</p>
+            <h1>Dashboard</h1>
+            <p>Monitor your phishing detection activity.</p>
+        </div>
+
+        <a href="scanner.html" class="primary-btn">
+            + New Scan
+        </a>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat-card">
+            <span>🔍</span>
+            <h3>Total Scans</h3>
+            <strong id="totalScans">24</strong>
+        </div>
+
+        <div class="stat-card safe">
+            <span>🟢</span>
+            <h3>Safe</h3>
+            <strong>15</strong>
+        </div>
+
+        <div class="stat-card warning">
+            <span>🟡</span>
+            <h3>Suspicious</h3>
+            <strong>6</strong>
+        </div>
+
+        <div class="stat-card danger">
+            <span>🔴</span>
+            <h3>Phishing</h3>
+            <strong>3</strong>
+        </div>
+
+    </div>
+
+
+    <section class="dashboard-section">
+
+        <div class="section-heading">
+            <h2>Recent Scans</h2>
+            <a href="history.html">View All</a>
+        </div>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Target</th>
+                        <th>Risk</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>URL</td>
+                        <td>secure-login-example.com</td>
+                        <td>82%</td>
+                        <td><span class="badge danger-badge">Phishing</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Email</td>
+                        <td>Bank Security Alert</td>
+                        <td>48%</td>
+                        <td><span class="badge warning-badge">Suspicious</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>URL</td>
+                        <td>google.com</td>
+                        <td>8%</td>
+                        <td><span class="badge safe-badge">Safe</span></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>
